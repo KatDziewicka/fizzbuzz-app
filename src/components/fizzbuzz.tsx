@@ -1,15 +1,17 @@
 import { useState } from "react";
 
 export default function Fizzbuzz(): JSX.Element {
-    const [numbersAndFizzBuzz, setNumOrFizzBuzz] = useState<any[]>([1]);
+    const [numbersAndFizzBuzz, setNumOrFizzBuzz] = useState<(number|string)[]>([0]);
 
     const handleFizzbuzzLogic = () => {
-        if (numbersAndFizzBuzz.length % 3===0) {
-            setNumOrFizzBuzz([...numbersAndFizzBuzz, "Fizz"]);
+        if (numbersAndFizzBuzz.length % 3===0 && numbersAndFizzBuzz.length % 5===0) {
+            setNumOrFizzBuzz([...numbersAndFizzBuzz, " Fizzbuzz "]);
+        } else if (numbersAndFizzBuzz.length % 3===0) {
+            setNumOrFizzBuzz([...numbersAndFizzBuzz, " Fizz "]);
         } else if (numbersAndFizzBuzz.length % 5===0) {
-            setNumOrFizzBuzz([...numbersAndFizzBuzz, "Buzz"]);
+            setNumOrFizzBuzz([...numbersAndFizzBuzz, " Buzz "]);
         } else {
-            setNumOrFizzBuzz([...numbersAndFizzBuzz, numbersAndFizzBuzz.length])
+            setNumOrFizzBuzz([...numbersAndFizzBuzz, ` ${numbersAndFizzBuzz.length} `])
         }
     }
 
